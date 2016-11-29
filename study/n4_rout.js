@@ -1,7 +1,5 @@
 var  http = require('http');
-
-// var User =require('./models/User.js');
-var Teacher =require('./models/Teacher.js');
+var url = require('url'); //node自带方法
 
 http.createServer(function (request,response) {
   //createServer  http再带的方法 意思 http创建了一个web的服务 request：客户向浏览器发出的请求对象 热response：服务器端向浏览器写回的对象
@@ -10,17 +8,11 @@ http.createServer(function (request,response) {
     //协议头 有协议头就要有协议尾
     //       输出              输出类型          文件为html类型的
      if(request.url!=="/favicon.ico"){  //清除第2次访问  
-        
-        // user = new User(1,'张三',20);
-        // // user.id = 1;
-        // // user.name = '张三';
-        // // user.age = 20 ;
-        // user.enter();
-
-        teacher = new Teacher(1,'张三',20);
-        teacher.enter();
-        teacher.teach(response)
-       
+       var pathname = url.parse(request.url).pathname;
+       //request.url 就拿到了 浏览器输入框里的内容
+       pathname = pathname.replace(/\//,'');
+       // 用正则 去掉 /  意思 用空字符串替换 /
+       console.log(pathname);
         response.end('');//不写则没有http协议尾,但写了会产生两次访问  开始一次 停止一次
     }  
 }).listen(8000);  //监听8000端口
