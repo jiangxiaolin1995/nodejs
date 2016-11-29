@@ -1,3 +1,6 @@
+/*-----------------------------第一课 安装介绍----------------- */
+
+
 //console.log('Hello Word');  测试
 var  http  =  require('http');  //http node再带的对象
 http.createServer(function  (request,  response)  {

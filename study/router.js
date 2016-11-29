@@ -1,4 +1,5 @@
-moduel.exports = {
+
+module.exports= {
   login : function (req,res) {
     res.write('我是login方法');
 

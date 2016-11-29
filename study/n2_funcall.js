@@ -1,3 +1,6 @@
+/*-----------------------------第二课 函数调用----------------- */
+
+
 var  http = require('http');
 var otherfun = require('./models/otherfuns.js'); // 这里将 otherfuns 里的 fun2 起了别名 在函数中调用会报错  在这里赋值了 只能把 otherfun作为函数名
 

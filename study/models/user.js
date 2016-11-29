@@ -8,6 +8,9 @@ function User(id,name,age) {
   }
 }
 module.exports = User;
+
+//这种方法不好使
+
 // module.exports = {
 //   User : function () {
 //     //成员变量

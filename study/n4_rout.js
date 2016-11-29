@@ -1,6 +1,9 @@
+/*-----------------------------第四课 路由介绍----------------- */
+
+
 var  http = require('http');
 var url = require('url'); //node自带方法
-
+var router = require('./router');
 http.createServer(function (request,response) {
   //createServer  http再带的方法 意思 http创建了一个web的服务 request：客户向浏览器发出的请求对象 热response：服务器端向浏览器写回的对象
 
@@ -13,6 +16,7 @@ http.createServer(function (request,response) {
        pathname = pathname.replace(/\//,'');
        // 用正则 去掉 /  意思 用空字符串替换 /
        console.log(pathname);
+       router[pathname](request,response);
         response.end('');//不写则没有http协议尾,但写了会产生两次访问  开始一次 停止一次
     }  
 }).listen(8000);  //监听8000端口
