@@ -19,6 +19,8 @@ http.createServer(function (request,response) {
 
       router[pathname](request,response);
       
+      
     }  
 }).listen(8000);  //监听8000端口
 console.log('Server  running  at  http://127.0.0.1:8000/');  
+
