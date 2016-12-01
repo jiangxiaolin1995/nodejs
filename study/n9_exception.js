@@ -23,10 +23,11 @@ http.createServer(function (request, response) {
     // 用正则 去掉 /  意思 用空字符串替换 /
     try {
       router[pathname](request,response);
+
     } catch (err) {
-      console.log('aaaa=' +err.toString());
-      response.writeHead(200,{'Content-Type':'text/html;charset=utf-8'});
-      response.write(err);
+      console.log('aaaa=' + err);
+      response.writeHead(200,{'Content-Type' : 'text/html; charset=utf-8'});
+      response.write(err.toString());
       response.end('');
       
     }

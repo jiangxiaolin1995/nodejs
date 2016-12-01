@@ -15,7 +15,10 @@ module.exports= {
     //res.write('我是login方法');
    
     recall = getRecall(req ,res);
-    optfile.readfile('./views/login.html'/*,response*/,recall); 
+    // optfile.readfile('./views/login.html'/*,response*/,recall); 
+    
+    //后台文件路径错误或者文件不存在
+    optfile.readfile('../views/login.html'/*,response*/,recall); 
   }
   ,zhuce : function (req,res) {
     recall = getRecall(req,res);
@@ -55,3 +58,5 @@ module.exports= {
   
 }
 
+//同步方法 直接try catch 
+//异步方法 直接在optfile 异步读取文件里 直接调用回电函数

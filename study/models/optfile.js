@@ -16,6 +16,9 @@ module.exports = {
     fs.readFile(path,function (err,data) {
       if(err){
         console.log(err);
+        
+        //如果在router里的文件读取不到 解决办法
+        recall('文件不存在');
 
       }else{
         console.log(data.toString());
@@ -58,5 +61,11 @@ module.exports = {
       }
     });
   }
+  ,expfun:function(flag){      
+        if(flag==0){      
+            throw  '我是例外';      
+        }      
+        return  "success";      
+    }      
 }
   
