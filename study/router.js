@@ -1,21 +1,24 @@
 
 var optfile = require('./models/optfile'); 
 
-
+function getRecall(req ,res){
+  res.writeHead(200,  {'Content-Type':  'text/html;  charset=utf-8'});
+  function recall(data) {
+    res.write(data);
+    res.end(' ');//不写则没有http协议尾,但写了会产生两次访问  开始一次 停止一次
+  }
+  return recall;
+}
 
 module.exports= {
   login : function (req,res) {
     //res.write('我是login方法');
-  
-    function recall(data) { //一个闭包函数 带有一个形参 
-      res.write(data);
-      res.end(' ');//不写则没有http协议尾,但写了会产生两次访问  开始一次 停止一次
-    
-    }
+   
+    recall = getRecall(req ,res);
     optfile.readfile('./views/login.html'/*,response*/,recall); 
   }
   ,zhuce : function (req,res) {
-  
+    recall = getRecall(req,res);
     function recall(data) { //一个闭包函数 带有一个形参 
       res.write(data);
       res.end(' ');//不写则没有http协议尾,但写了会产生两次访问  开始一次 停止一次
@@ -27,6 +30,7 @@ module.exports= {
 
   }
   ,writefile :function (req,res) {
+   
      function recall(data) { //一个闭包函数 带有一个形参 
       res.write(data);
       res.end(' ');//不写则没有http协议尾,但写了会产生两次访问  开始一次 停止一次
@@ -35,10 +39,18 @@ module.exports= {
     optfile.writefile('./views/one.txt','写入内容',recall)
     
   }
-  ,showimg : fun
-  {
+
+
+
+  //显示图片有问题 找不到啊！！！！！！！！！！！！！！！！！
+  ,showimg : function(req,res){
+    res.writeHead(200,  {'Content-Type':  'image/jpeg'});
+    console.log('1');
+    optfile.readImg('./imgs/1.png',res);
+
+  }
 
   
-  }
+  
   
 }

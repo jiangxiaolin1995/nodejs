@@ -1,3 +1,4 @@
+
 var fs = require('fs'); // node自带操作文件的类
 
 module.exports = {
@@ -45,7 +46,7 @@ module.exports = {
   }
 
   //读取图片
-  ,readImg :function (path,res) {
+  ,readImg : function (path,res) {
     fs.readFile(path,'binary',function (err,filedata) {
       if(err){
         console.log(err);
