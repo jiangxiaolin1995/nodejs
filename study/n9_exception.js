@@ -1,7 +1,7 @@
 var http = require('http'); //http node再带的对象
 var url = require('url'); //node自带方法
 var router = require('./router');
-
+var exception = require('./models/Exception');
 
 http.createServer(function (request, response) {
   //createServer  http再带的方法 意思 http创建了一个web的服务 request：客户向浏览器发出的请求对象 热response：服务器端向浏览器写回的对象
@@ -21,8 +21,13 @@ http.createServer(function (request, response) {
     //request.url 就拿到了 浏览器输入框里的内容
     pathname = pathname.replace(/\//, '');
     // 用正则 去掉 /  意思 用空字符串替换 /
+   
     try {
-      router[pathname](request,response);
+       //为之后的throw例子注释
+      // router[pathname](request,response);
+      data = exception.expfun(0);
+      response.write(data);
+      response.end('');
 
     } catch (err) {
       console.log('aaaa=' + err);
