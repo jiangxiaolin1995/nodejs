@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>document</title>
+  <meta charset="UTF-8">
+  <script>
+      var  str  =  "asdfHellofz";  
+      var  re  =  /he.{1,}o/i/*表匹配前面的子表达式零次或多次,?表匹配前面的子表达式零次或一次  */
+      window.onload=function(){  
+        
+        // if(re.test(str)){
+        //   alert('含有');
+        // }else{
+        //   alert('没有');
+        // }
+
+        alert(re.test(str));    //true表包含  
+        alert(str.replace(re,"费劲")); 
+
+        // ?  匹配表达式0次或者1次
+        // +  表达式至少出现1次，相当于  {1,}
+        // *  表达式不出现或出现任意次，相当于  {0,}
+}  
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

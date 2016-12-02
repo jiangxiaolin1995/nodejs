@@ -1,16 +1,13 @@
 var optfile = require('./models/optfile');
 var url = require('url');
-var  querystring  =  require('querystring');  //post需导入
+var querystring = require('querystring'); //post需导入
 
 function getRecall(req, res) {
   res.writeHead(200, {
     'Content-Type': 'text/html;  charset=utf-8'
   });
 
-  function recall(data) {
-    res.write(data);
-    res.end(''); //不写则没有http协议尾,但写了会产生两次访问  开始一次 停止一次
-  }
+
   return recall;
 }
 
@@ -37,12 +34,27 @@ module.exports = {
       post = querystring.parse(post);
       console.log('email:' + post['email'] + '\n');
       console.log('pwd:' + post['pwd'] + '\n');
-    });
-    recall = getRecall(req, res);
-    // optfile.readfile('./views/login.html'/*,response*/,recall); 
 
-    //后台文件路径错误或者文件不存在
-    optfile.readfile('./views/login.html' /*,response*/ , recall);
+      var arr = ['email', 'pwd'];
+
+      function recall(data) {
+        dataStr = data.toString();
+        for (var i = 0; i < arr.length; i++) {
+          re = new RegExp('{' + arr[i] + '}', 'g'); // /\{name\}/g
+          dataStr = dataStr.replace(re, post[arr[i]]);
+        }
+        res.write(data.toString());
+        //res.end(''); //不写则没有http协议尾,但写了会产生两次访问  开始一次 停止一次
+      }
+      //第十二节课第一次修改 把recall注释了
+      //recall = getRecall(req, res);
+
+      optfile.readfile('./views/login.html' /*,response*/ , recall);
+
+      //后台文件路径错误或者文件不存在
+      optfile.readfile('./views/login.html' /*,response*/ , recall);
+    });
+
   },
   zhuce: function (req, res) {
     recall = getRecall(req, res);
