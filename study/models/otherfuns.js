@@ -4,6 +4,7 @@
 // }
 // module.exports = fun2;  // 只支持一个函数
 
+//module.exports和exports. 区别 module.exports是真实存在的东西 exports.是module的辅助方法
 
 //支持多个函数的写法
 module.exports = {
