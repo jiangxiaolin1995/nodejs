@@ -2,4 +2,6 @@
 {
   "editor.renderIndentGuides": true
   ,"editor.fontSize": 16
+  ,"editor.wordWrap": true
+  , "editor.cursorStyle": "line"
 }
